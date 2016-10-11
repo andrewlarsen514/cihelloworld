@@ -1,0 +1,56 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.1.RELEASE'
+	}
+	repositories {
+		//jfrog artifactory repo
+		jcenter()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		//jfrog dependency
+		classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.4.0"
+
+	}
+}
+
+//jfrog artifactory plugin
+apply plugin: "com.jfrog.artifactory"
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+
+jar {
+	baseName = 'allie'
+	version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+//plugins {
+	//id "com.jfrog.artifactory" version "4.4.0"
+//}
+repositories {
+	jcenter()
+}
+
+artifactory {
+	contextUrl = 'http://ec2-54-187-110-243.us-west-2.compute.amazonaws.com:8081/artifactory'
+	publish {
+		repository {
+			repoKey = "libe-snapshot-local"
+			username = "admin"
+			password = "password"
+		}
+	}
+	resolve {
+		repoKey = 'jcenter'
+	}
+}
+
+dependencies {
+	//compile('org.springframework.boot:spring-boot-starter-data-mongodb')
+	compile('org.springframework.boot:spring-boot-starter-data-neo4j')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
