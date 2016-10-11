@@ -38,16 +38,17 @@ targetCompatibility = 1.8
 repositories {
 	jcenter()
 }
-//task sourcesJar(type: Jar, dependsOn: classes) {
-//	classifier = 'sources'
-//	from sourceSets.main.allSource
-//}
+task sourcesJar(type: Jar, dependsOn: classes) {
+	classifier = 'sources'
+	from sourceSets.main.allSource
+}
 
 publishing {
 	publications {
 		main(MavenPublication) {
 			from components.java
-			artifacts = ["build/libs/hello-allie-${version}.jar"]
+			artifact sourcesJar
+		//	artifacts = ["build/libs/hello-allie-${version}.jar"]
 		}
 	}
 }
