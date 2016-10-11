@@ -75,23 +75,21 @@ artifactory {
 
 }
 
-task zipArchive(type: Zip) {
-	from 'ci/'
+task zipAWSArchive(type: Zip) {
+	def artifactName = archivesBaseName + "-${System.env.HELLO_VERSION}.jar"
 	include '*'
-	include '*/*' //to include contents of a folder
-	from 'config/Test'
-	include '*'
-	archiveName 'now-s3.zip'
+	from 'build/libs/'
+	archiveName  artifactName
 	destinationDir(file('dir/'))
 }
 
-task s3Upload(type: Exec){
+task s3Upload(type: Exec, dependsOn: zipAWSArchive){
 	//define location of s3 upload script
 	def s3Upload="/apps/allstate/s3upload.sh"
 	//defined name of file to be uploaded
-	def artifactName = archivesBaseName + "-${System.env.HELLO_VERSION}.jar"
+	def artifactName = archivesBaseName + "-${System.env.HELLO_VERSION}.zip"
 	//define path of project where artifact is located
-	def localDist = "build/libs/${artifactName}";
+	def localDist = "dir/${artifactName}";
 
 	// Moves the distribution file to the right S3 bucket
 	executable "bash"
