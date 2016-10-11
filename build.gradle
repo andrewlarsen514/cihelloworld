@@ -78,7 +78,7 @@ artifactory {
 
 }
 
-task s3Upload(type:Exec,  depenendsOn:[jar]){
+task s3Upload(type:Exec,  dependsOn:[jar]){
 	//define location of s3 upload script
 	def s3Upload="ci/s3upload.sh"
 	//defined name of file to be uploaded
