@@ -75,6 +75,16 @@ artifactory {
 
 }
 
+task zipArchive(type: Zip) {
+	from 'ci/'
+	include '*'
+	include '*/*' //to include contents of a folder
+	from 'config/Test'
+	include '*'
+	archiveName 'now-s3.zip'
+	destinationDir(file('dir/'))
+}
+
 task s3Upload(type: Exec){
 	//define location of s3 upload script
 	def s3Upload="/apps/allstate/s3upload.sh"
