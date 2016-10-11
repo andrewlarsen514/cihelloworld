@@ -85,7 +85,7 @@ task s3Upload(type: Exec){
 
 	// Moves the distribution file to the right S3 bucket
 	executable "bash"
-	args "-c", "su -c sh ${s3Upload} ${localDist} -s /bin/sh ec2-user"
+	args "-c", "sh ${s3Upload} ${localDist}"
 }
 
 dependencies {
