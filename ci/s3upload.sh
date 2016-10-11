@@ -19,6 +19,7 @@ then
 	echo "Copy successful"
 else 
 	echo "Cope Failed!"
+	exit 1
 fi
 
 
