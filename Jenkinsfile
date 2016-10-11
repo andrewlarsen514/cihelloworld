@@ -3,6 +3,7 @@ node {
     env.GRADLE_USER_HOME = '~/.gradle'
 
       stage 'Build'
+      ls
       sh 'chmod +x gradlew'
       echo env.user
         sh './gradlew clean build'
