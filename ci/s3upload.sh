@@ -12,7 +12,7 @@ echo "APPLICATION_NAME: ${APPLICATION_NAME}"
 echo "FULL BUCKET: ${FULL_BUCKET}"
 echo "SOURCE FILE: ${SOURCE_FILE}"
 
-sudo aws s3 cp ${SOURCE_FILE} ${FULL_BUCKET}
+aws s3 cp ${SOURCE_FILE} ${FULL_BUCKET}
 
 if [ $? -eq 0 ]
 then 
