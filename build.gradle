@@ -77,7 +77,7 @@ artifactory {
 
 task s3Upload(type: Exec){
 	//define location of s3 upload script
-	def s3Upload="ci/s3upload.sh"
+	def s3Upload="apps/allstate/s3upload.sh"
 	//defined name of file to be uploaded
 	def artifactName = archivesBaseName + "-${System.env.HELLO_VERSION}.jar"
 	//define path of project where artifact is located
