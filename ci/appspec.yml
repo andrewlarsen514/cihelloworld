@@ -1,0 +1,18 @@
+--- 
+files: 
+  -
+    source: /*.jar
+    destination: /apps/
+
+hooks:
+  BeforeInstall:
+      -
+        location: deploy_hooks/delete-config.sh
+        runas: root
+        timeout: 3600
+  ValidateService:
+    - 
+      location: deploy_hooks/validate-change.sh
+      timeout: 3600
+os: linux
+version: 0.0

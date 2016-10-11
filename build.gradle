@@ -56,7 +56,7 @@ publishing {
 	}
 }
 artifactory {
-	contextUrl = 'http://ec2-54-187-110-243.us-west-2.compute.amazonaws.com:8081/artifactory'
+	contextUrl = 'http://ec2-54-201-92-22.us-west-2.compute.amazonaws.com:8081/artifactory'
 	resolve {
 		repository {
 			repoKey = 'libs-release'
@@ -87,7 +87,7 @@ task zipAWSArchive(type: Zip) {
 
 task s3Upload(type: Exec, dependsOn: zipAWSArchive){
 	//define location of s3 upload script
-	def s3Upload="/apps/allstate/s3upload.sh"
+	def s3Upload="/automation/s3upload.sh"
 	//defined name of file to be uploaded
 	def artifactName = archivesBaseName + "-${System.env.HELLO_VERSION}.zip"
 	//define path of project where artifact is located
@@ -96,6 +96,17 @@ task s3Upload(type: Exec, dependsOn: zipAWSArchive){
 	// Moves the distribution file to the right S3 bucket
 	executable "bash"
 	args "-c", "sh ${s3Upload} ${localDist}"
+}
+
+// Deploys a given revision to the test environment
+task deployOnTest(type:Exec) {
+	// Defines the path into the project of the deploy.sh script
+	def deploy = "automation/deploy.sh"
+	// Defines the distribution name based on the jar section
+	def artifactName = archivesBaseName + "-${System.env.HELLO_VERSION}.zip"
+	// Deploys the given distribution to the test deployment group
+	executable "bash"
+	//args "-c", "sh ${deploy} test ${distName}"
 }
 
 dependencies {
