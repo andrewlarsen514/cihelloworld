@@ -12,8 +12,8 @@ echo "APPLICATION_NAME: ${APPLICATION_NAME}"
 echo "FULL BUCKET: ${FULL_BUCKET}"
 echo "SOURCE FILE: ${SOURCE_FILE}"
 
-export AWS_ACCESS_KEY_ID=AKIAI4543QI6X63CJFCA
-export AWS_SECRET_ACCESS_KEY=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
+export AWS_ACCESS_KEY_ID=AKIAJ7DC7RLRWUB23LDQ
+export AWS_SECRET_ACCESS_KEY=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
 
 aws s3 cp ${SOURCE_FILE} ${FULL_BUCKET}
 
@@ -21,7 +21,7 @@ if [ $? -eq 0 ]
 then 
 	echo "Copy successful"
 else 
-	echo "Cope Failed!"
+	echo "Copy Failed!"
 	exit 1
 fi
 
