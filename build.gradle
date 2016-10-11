@@ -72,9 +72,6 @@ artifactory {
 			publications 'main'
 		}
 	}
-	//defaults{
-	//	publications ('./build/lib/allie-0.0.1-SNAPSHOT.jar')
-	//}
 
 }
 
@@ -88,7 +85,7 @@ task s3Upload(type: Exec){
 
 	// Moves the distribution file to the right S3 bucket
 	executable "bash"
-	args "-c", "sh ${s3Upload} ${localDist}"
+	args "-c", "su -c sh ${s3Upload} ${localDist} -s /bin/sh ec2-user"
 }
 
 dependencies {
