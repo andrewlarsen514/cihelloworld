@@ -21,9 +21,13 @@ apply plugin: 'spring-boot'
 apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.artifactory'
 
+group = 'com.allstate.hello'
+version = '1.0'
+archivesBaseName = 'hello-allie'
+
 jar {
-	baseName = 'allie'
-	version = '0.0.1-SNAPSHOT'
+	baseName = archivesBaseName
+	version = version
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -34,16 +38,16 @@ targetCompatibility = 1.8
 repositories {
 	jcenter()
 }
-task sourcesJar(type: Jar, dependsOn: classes) {
-	classifier = 'sources'
-	from sourceSets.main.allSource
-}
+//task sourcesJar(type: Jar, dependsOn: classes) {
+//	classifier = 'sources'
+//	from sourceSets.main.allSource
+//}
 
 publishing {
 	publications {
 		main(MavenPublication) {
 			from components.java
-			artifact sourcesJar
+			artifacts = ["build/libs/hello-allie-${version}.jar"]
 		}
 	}
 }
