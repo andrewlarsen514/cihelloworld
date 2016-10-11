@@ -76,7 +76,7 @@ artifactory {
 }
 
 task zipAWSArchive(type: Zip) {
-	def artifactName = archivesBaseName + "-${System.env.HELLO_VERSION}.jar"
+	def artifactName = archivesBaseName + "-${System.env.HELLO_VERSION}.zip"
 	from 'ci/'
 	include '*'
 	include '*'
