@@ -25,6 +25,9 @@ group = 'com.allstate.hello'
 version = '1.0'
 archivesBaseName = 'hello-allie'
 
+if (System.env.HELLO_VERSION) {
+	version = "${System.env.HELLO_VERSION}"
+}
 jar {
 	baseName = archivesBaseName
 	version = version
