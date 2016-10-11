@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo rm -f apps/*.jar
+sudo rm -f /apps/*.jar

@@ -10,6 +10,11 @@ hooks:
         location: deploy_hooks/delete-config.sh
         runas: root
         timeout: 3600
+  ApplicationStart:
+    -
+      location: deploy_hooks/deploy-jar.sh
+      runas: root
+      timeout: 3600
   ValidateService:
     - 
       location: deploy_hooks/validate-change.sh
