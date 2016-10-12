@@ -79,6 +79,7 @@ task zipAWSArchive(type: Zip) {
 	def artifactName = archivesBaseName + "-${System.env.HELLO_VERSION}.zip"
 	from 'ci/'
 	include '*'
+	include '*/*' //to include contents of a folder
 	include '*'
 	from 'build/libs/'
 	archiveName  artifactName
