@@ -77,7 +77,7 @@ artifactory {
 }
 
 task zipAWSArchive(type: Zip) {
-	def artifactName = archivesBaseName + "-1.0"//"-${System.env.HELLO_VERSION}"
+	def artifactName = archivesBaseName + "-${System.env.HELLO_VERSION}"
 	def zip = artifactName + ".zip"
 	def buildPath = 'build/libs/' + artifactName + ".war";
 	from('ci/') {
