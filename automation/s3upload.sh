@@ -4,7 +4,7 @@ AWS="/usr/local/bin/aws"
 
 APPLICATION_NAME="hello-allie"
 
-BUCKET_NAME="allstatebucket"
+BUCKET_NAME="allstatedeployables"
 FULL_BUCKET="s3://${BUCKET_NAME}/${APPLICATION_NAME}/"
 SOURCE_FILE=$1
 
