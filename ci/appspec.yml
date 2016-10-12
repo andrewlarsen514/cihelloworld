@@ -2,7 +2,7 @@
 files: 
   -
     source: source/
-    destination: /usr/share/tomcat8/webapps
+    destination: /usr/share/tomcat8/webapps/
 
 hooks:
   BeforeInstall:
@@ -14,10 +14,6 @@ hooks:
     -
       location: deploy_hooks/start-tomcat.sh
       runas: root
-      timeout: 3600
-  ValidateService:
-    - 
-      location: deploy_hooks/validate-change.sh
       timeout: 3600
 os: linux
 version: 0.0
