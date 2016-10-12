@@ -2,7 +2,7 @@
 files: 
   -
     source: /*.jar
-    destination: /apps/
+    destination: /allie/run
 
 hooks:
   BeforeInstall:

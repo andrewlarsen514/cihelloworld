@@ -56,7 +56,7 @@ publishing {
 	}
 }
 artifactory {
-	contextUrl = 'http://ec2-54-201-92-22.us-west-2.compute.amazonaws.com:8081/artifactory'
+	contextUrl = 'http://ec2-54-213-250-46.us-west-2.compute.amazonaws.com:8081/artifactory'
 	resolve {
 		repository {
 			repoKey = 'libs-release'
@@ -106,7 +106,7 @@ task deployOnTest(type:Exec) {
 	def artifactName = archivesBaseName + "-${System.env.HELLO_VERSION}.zip"
 	// Deploys the given distribution to the test deployment group
 	executable "bash"
-	//args "-c", "sh ${deploy} test ${distName}"
+	args "-c", "sh ${deploy} test ${artifactName}"
 }
 
 dependencies {
