@@ -11,5 +11,7 @@ node {
         sh './gradlew artifactoryPublish --debug --stacktrace'
       stage 'Publish Artifact to S3'
         sh './gradlew s3Upload --debug --stacktrace'
+      stage 'Deploy Dev'
+        sh './gradlew deployOnTest --debug --stacktrace'
 
 }
