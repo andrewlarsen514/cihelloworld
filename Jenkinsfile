@@ -2,6 +2,7 @@ node {
         env.HELLO_VERSION = "1.0."+env.BUILD_NUMBER+"-SNAPSHOT"
     env.GRADLE_USER_HOME = '~/.gradle'
 
+  git url: 'https://github.com/andrewlarsen514/cihelloworld.git'
       stage 'Build'
       sh 'chmod +x gradlew'
       echo env.user
