@@ -81,7 +81,7 @@ task zipAWSArchive(type: Zip) {
 	include '*'
 	include '*/*' //to include contents of a folder
 	include '*'
-	from 'build/libs/'
+	from 'build/libs/${artifactName}.jar'
 	archiveName  artifactName
 	destinationDir(file('dir/'))
 }
