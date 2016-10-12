@@ -2,17 +2,17 @@
 files: 
   -
     source: /*.jar
-    destination: /allie/run
+    destination: /usr/share/tomcat8/webapps
 
 hooks:
   BeforeInstall:
       -
-        location: deploy_hooks/delete-config.sh
+        location: deploy_hooks/stop-tomcat.sh
         runas: root
         timeout: 3600
   ApplicationStart:
     -
-      location: deploy_hooks/deploy-jar.sh
+      location: deploy_hooks/start-tomcat.sh
       runas: root
       timeout: 3600
   ValidateService:
