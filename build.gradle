@@ -24,7 +24,7 @@ apply plugin: 'war'
 
 group = 'com.allstate.hello'
 version = '1.0'
-archivesBaseName = 'hello-allie'
+archivesBaseName = 'allie'
 
 if (System.env.HELLO_VERSION) {
 	version = "${System.env.HELLO_VERSION}"
@@ -85,10 +85,6 @@ task zipAWSArchive(type: Zip) {
 		include '*/*' //to include contents of a folder
 	}
 	from (buildPath) {
-		include '*'
-		into ('source')
-	}
-	from ('test') {
 		include '*'
 		into ('source')
 	}
