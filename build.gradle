@@ -77,13 +77,17 @@ artifactory {
 }
 
 task zipAWSArchive(type: Zip) {
-	def artifactName = archivesBaseName + "-${System.env.HELLO_VERSION}.zip"
+	def artifactName = archivesBaseName + "-${System.env.HELLO_VERSION}"
+	def zip = artifactName + ".zip"
+	def buildPath = 'build/libs/' +artifactName + ".jar";
+	println zip
+	println buildPath
 	from 'ci/'
 	include '*'
 	include '*/*' //to include contents of a folder
 	include '*'
-	from 'build/libs/${artifactName}.zip'
-	archiveName  artifactName
+	from buildPath
+	archiveName  zip
 	destinationDir(file('dir/'))
 }
 
