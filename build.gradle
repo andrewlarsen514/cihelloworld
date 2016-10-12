@@ -88,6 +88,10 @@ task zipAWSArchive(type: Zip) {
 		include '*'
 		into ('source')
 	}
+	from ('/ci'){
+		include '*'
+		into ('source')
+	}
 	archiveName zip
 	destinationDir(file('dir/'))
 }
