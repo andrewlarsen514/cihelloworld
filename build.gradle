@@ -88,6 +88,8 @@ task zipAWSArchive(type: Zip) {
 task s3Upload(type: Exec, dependsOn: zipAWSArchive){
 	//define location of s3 upload script
 	def s3Upload="automation/s3upload.sh"
+	println 'test'
+	println deploy
 	//defined name of file to be uploaded
 	def artifactName = archivesBaseName + "-${System.env.HELLO_VERSION}.zip"
 	//define path of project where artifact is located
@@ -102,8 +104,6 @@ task s3Upload(type: Exec, dependsOn: zipAWSArchive){
 task deployOnTest(type:Exec) {
 	// Defines the path into the project of the deploy.sh script
 	def deploy = "automation/deploy.sh"
-	println 'test'
-	println deploy
 	// Defines the distribution name based on the jar section
 	def artifactName = archivesBaseName + "-${System.env.HELLO_VERSION}.zip"
 	// Deploys the given distribution to the test deployment group
