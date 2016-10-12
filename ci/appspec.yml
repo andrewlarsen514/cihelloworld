@@ -1,7 +1,7 @@
 --- 
 files: 
   -
-    source: source/
+    source: source
     destination: /usr/share/tomcat8/webapps/
 
 hooks:
