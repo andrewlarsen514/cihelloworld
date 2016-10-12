@@ -87,7 +87,7 @@ task zipAWSArchive(type: Zip) {
 
 task s3Upload(type: Exec, dependsOn: zipAWSArchive){
 	//define location of s3 upload script
-	def s3Upload="/automation/s3upload.sh"
+	def s3Upload="automation/s3upload.sh"
 	//defined name of file to be uploaded
 	def artifactName = archivesBaseName + "-${System.env.HELLO_VERSION}.zip"
 	//define path of project where artifact is located
