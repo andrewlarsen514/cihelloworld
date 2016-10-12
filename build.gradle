@@ -29,7 +29,7 @@ archivesBaseName = 'hello-allie'
 if (System.env.HELLO_VERSION) {
 	version = "${System.env.HELLO_VERSION}"
 }
-jar {
+war {
 	baseName = archivesBaseName
 	version = version
 }
@@ -79,7 +79,7 @@ artifactory {
 task zipAWSArchive(type: Zip) {
 	def artifactName = archivesBaseName + "-${System.env.HELLO_VERSION}"
 	def zip = artifactName + ".zip"
-	def buildPath = 'build/libs/' +artifactName + ".jar";
+	def buildPath = 'build/libs/' +artifactName + ".war";
 	println zip
 	println buildPath
 	from 'ci/'
